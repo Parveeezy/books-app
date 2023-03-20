@@ -1,18 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 } from 'uuid';
 
+export type ValuesTypeAndText = 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry';
+
 export type CategoriesType = {
     id: string,
-    text: 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry'
-    value: 'all' | 'art' | 'biography' | 'computers' | 'history' | 'medical' | 'poetry'
+    text: ValuesTypeAndText
+    value: ValuesTypeAndText
 };
 export type CategoriesArrayType = CategoriesType[];
-// type InitialStateType = [{
-//     id: string,
-//     text: string,
-//     value: string
-// }];
-
 const categories: CategoriesArrayType = [
     {
         id: v4(),
@@ -50,23 +46,17 @@ const categories: CategoriesArrayType = [
         value: 'poetry',
     },
 ];
-// const initialState: InitialStateType = [{
-//     id: v4(),
-//     text: 'all',
-//     value: 'all'
-// }];
+
 
 const selectSlice = createSlice({
     name: 'select',
     initialState: categories,
     reducers: {
         select: (state, action) => {
-            return {...state,
-                categories:
-                    {id: action.payload.id, text: action.payload.text, value: action.payload.value}
-            }
+            return {...state};
         },
-    }});
+    },
+});
 
 export const { select } = selectSlice.actions;
 export default selectSlice.reducer;

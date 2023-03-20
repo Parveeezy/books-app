@@ -1,32 +1,30 @@
-import React, { ChangeEvent, FC, SetStateAction, useState } from 'react';
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import React, { useState } from 'react';
+import { MenuItem, Select } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { CategoriesArrayType, CategoriesType } from '../../redux/selectSlice/selectSlice';
+import { CategoriesType, select, ValuesTypeAndText } from '../../redux/selectSlice/selectSlice';
 import { AppDispatch, RootState } from '../../redux/store/store';
-import { v4 } from 'uuid';
 
 const Selects = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const categoriesArr: any = useSelector<RootState>(state => state.select);
 
-    const dispatch: AppDispatch = useDispatch();
-    const categories: any = useSelector<RootState>(state => state.select);
-
-    const [value, setValue] = useState<CategoriesType>({ id: v4(), value: 'all', text: 'all' });
-
-    const onChangeHandler = (event: SelectChangeEvent) => {
-        console.log(event.target.value as string);
-    };
+    const [value, setValue] = useState<ValuesTypeAndText>(categoriesArr[0].value);
 
     const onClickHandler = (el: CategoriesType) => {
-        setValue(el)
+        setValue(el.value);
+        dispatch(select(el));
     };
+
+    console.log(categoriesArr);
 
     return (
         <div>
             categories
-            <Select >
-                {categories.map((el: CategoriesType) => {
+            <Select value={value}>
+                {categoriesArr.map((el: CategoriesType) => {
                     return (
-                        <MenuItem key={el.id} value={el.value} onClick={() => onClickHandler(el.value)}>{el.text}</MenuItem>
+                        <MenuItem key={el.id} value={el.value}
+                                  onClick={() => onClickHandler(el)}>{el.text}</MenuItem>
                     );
                 })}
             </Select>
