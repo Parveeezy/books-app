@@ -1,46 +1,32 @@
-import React from 'react';
-import { MenuItem, Select } from '@mui/material';
+import React, { ChangeEvent, FC, SetStateAction, useState } from 'react';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { CategoriesArrayType, CategoriesType } from '../../redux/selectSlice/selectSlice';
+import { AppDispatch, RootState } from '../../redux/store/store';
+import { v4 } from 'uuid';
 
 const Selects = () => {
 
-    const categories = [
-        {
-            text: 'all',
-            value: 'all',
-        },
-        {
-            text: 'art',
-            value: 'art',
-        },
-        {
-            text: 'biography',
-            value: 'biography',
-        },
-        {
-            text: 'computers',
-            value: 'computers',
-        },
-        {
-            text: 'history',
-            value: 'history',
-        },
-        {
-            text: 'medical',
-            value: 'medical',
-        },
-        {
-            text: 'poetry',
-            value: 'poetry',
-        },
-    ];
+    const dispatch: AppDispatch = useDispatch();
+    const categories: any = useSelector<RootState>(state => state.select);
+
+    const [value, setValue] = useState<CategoriesType>({ id: v4(), value: 'all', text: 'all' });
+
+    const onChangeHandler = (event: SelectChangeEvent) => {
+        console.log(event.target.value as string);
+    };
+
+    const onClickHandler = (el: CategoriesType) => {
+        setValue(el)
+    };
 
     return (
         <div>
             categories
-            <Select>
-                {categories.map(el => {
+            <Select >
+                {categories.map((el: CategoriesType) => {
                     return (
-                        <MenuItem value={el.value}>{el.text}</MenuItem>
+                        <MenuItem key={el.id} value={el.value} onClick={() => onClickHandler(el.value)}>{el.text}</MenuItem>
                     );
                 })}
             </Select>
