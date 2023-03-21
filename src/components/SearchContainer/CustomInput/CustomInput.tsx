@@ -3,9 +3,9 @@ import {CustomInpt} from "./components";
 
 const CustomInput = () => {
     return (
-        <div>
-            <CustomInpt fullWidth label="fullWidth" id="fullWidth" />
-        </div>
+        <>
+            <CustomInpt fullWidth label="Search books..." id="fullWidth"/>
+        </>
     );
 };
 
