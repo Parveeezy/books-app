@@ -29,7 +29,7 @@ const Selects = () => {
 
     return (
         <SelectsContainer>
-            <Title>categories: &nbsp;</Title>
+            <Title>Categories: &nbsp;</Title>
             <CustomSelect value={categoriesValue}>
                 {categoriesArr.map((el: CategoriesType) => {
                     return (

@@ -3,6 +3,7 @@ import { MenuItem, Select } from '@mui/material';
 
 export const SelectsContainer = styled('div')`
   margin-top: 25px;
+  margin-left: 45px;
 `;
 
 export const Title = styled('span')`
@@ -11,51 +12,23 @@ export const Title = styled('span')`
   font-weight: 600;
 `
 
-
 export const CustomSelect = styled(Select)`
-  fieldset {
-    border-color: #ffffff;;
+  border: 2px solid transparent;
+  margin-right: 10px;
+  
+  & .MuiOutlinedInput-input {
+    color: #ffffff
   }
 
-  //.MuiInputBase-root {
-  //  & .Mui-focused:active {
-  //    border-color: yellow
-  //  }
-  //}
-  //
-  //.MuiSelect-select {
-  //  color: white;
-  //}
+  .MuiOutlinedInput-notchedOutline {
+    border-color: white;
+  }
 
-& .MuiOutlinedInput-input {
-  color: green
-},
-& .MuiInputLabel-root {
-  color: green
-},
-& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
-  border-color: green
-},
-&:hover .MuiOutlinedInput-input {
-  color: red
-},
-&:hover .MuiInputLabel-root {
-  color: red
-},
-&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
-  border-color: red
-},
-& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input {
-  color: purple
-},
-& .MuiInputLabel-root.Mui-focused {
-  color: purple
-},
-& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: purple
-}
+  :hover {
+    border: 2px solid yellow;
+  }
 `
 
 export const CustomMenuItem = styled(MenuItem)`
-
+  
 `

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchContainerWrapper } from '../components';
+import { SearchContainerWrapper } from './components';
 import SearchForm from './SearchForm/SearchForm';
 
 const SearchContainer = () => {
