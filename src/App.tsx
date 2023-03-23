@@ -7,8 +7,8 @@ function App() {
 
     return (
         <div className='App'>
-            <SearchContainer/>
-            <Results/>
+            <SearchContainer />
+            <Results />
         </div>
     );
 }

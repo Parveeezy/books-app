@@ -1,21 +1,49 @@
 import React from 'react';
-import { ResultsBlock, ResultsItemsContainer, ResultsTitle } from './components';
-import { Grid } from '@mui/material';
+import {
+    ResultCardItemAuthorName,
+    ResultCardItemBookName,
+    ResultCardItemCategory,
+    ResultCardItemImage,
+    ResultsBlock,
+    ResultsCardItemWrapper,
+    ResultsItemsBlock,
+    ResultsTitle,
+} from './components';
 
 const Results = () => {
+
+    const getBooks = (): Promise<void> => {
+        dispatch => {
+            return fetch('https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc')
+                .then(response => response.json())
+                .then(data => data);
+        };
+    };
+
+
     return (
         <ResultsBlock>
             <ResultsTitle>Found 446 result</ResultsTitle>
-            <ResultsItemsContainer>
-                {/*<Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 16 }}>*/}
-                {/*    /!*{Array.from(Array(6)).map((_, index) => (*!/*/}
-                {/*        <Grid xs={2} sm={4} md={4} key={index}>*/}
-                {/*            <Item>xs=2</Item>*/}
-                {/*        </Grid>*/}
-                {/*    /!*))}*!/*/}
-                {/*</Grid>*/}
+            <ResultsItemsBlock>
 
-            </ResultsItemsContainer>
+                <ResultsCardItemWrapper>
+                    <ResultCardItemImage />
+
+                    <ResultCardItemCategory>
+                        Category
+                    </ResultCardItemCategory>
+
+                    <ResultCardItemBookName>
+                        BookNameddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                    </ResultCardItemBookName>
+
+                    <ResultCardItemAuthorName>
+                        Pushkin
+                    </ResultCardItemAuthorName>
+                </ResultsCardItemWrapper>
+
+
+            </ResultsItemsBlock>
         </ResultsBlock>
     );
 };
