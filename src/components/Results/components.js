@@ -17,6 +17,7 @@ export const ResultsItemsBlock = styled('div')`
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 10px;
+  margin-left: 15px;
 `;
 
 export const ResultsCardItemWrapper = styled('div')`

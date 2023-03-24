@@ -66,6 +66,7 @@ const sorting: SortingArrayType = [
         value: 'newest'
     }
 ];
+
 const selectCategoriesSlice = createSlice({
     name: 'selectCategories',
     initialState: categories,

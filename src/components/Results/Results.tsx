@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     ResultCardItemAuthorName,
     ResultCardItemBookName,
@@ -9,20 +9,29 @@ import {
     ResultsItemsBlock,
     ResultsTitle,
 } from './components';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../redux/store/store';
+import axios from 'axios';
+import { getBooks, getBooksReducer } from '../../redux/getBooksSlice/getBooksSlice';
 
 const Results = () => {
 
-    const getBooks = (): Promise<void> => {
-        dispatch => {
-            return fetch('https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc')
-                .then(response => response.json())
-                .then(data => data);
-        };
+    const [books, setBooks] = useState();
+    const booksArr: any = useSelector<RootState>(state => state.books);
+
+    const fetchBooks = (a: any) => async (dispatch: AppDispatch) => {
+        const a = await axios.get('https://www.googleapis.com/books/v1/volumes?q=time&printType=magazines&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc')
+            .then((response) => dispatch((response.data.items)));
+
+        setBooks(a);
     };
 
+    console.log(booksArr);
 
     return (
         <ResultsBlock>
+
+            <button onClick={() => fetchBooks(books)}>fetch</button>
             <ResultsTitle>Found 446 result</ResultsTitle>
             <ResultsItemsBlock>
 
@@ -34,7 +43,7 @@ const Results = () => {
                     </ResultCardItemCategory>
 
                     <ResultCardItemBookName>
-                        BookNameddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                        name
                     </ResultCardItemBookName>
 
                     <ResultCardItemAuthorName>
