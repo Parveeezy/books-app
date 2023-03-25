@@ -38,13 +38,13 @@ export const ResultsCardItemWrapper = styled('div')`
   }
 `;
 
-export const ResultCardItemImage = styled('img')`
-  margin-top: 30px;
-  background: url("https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/817kywRJjVL.jpg") no-repeat center;
-  background-size: cover;
-  width: 200px;
-  height: 300px;
-`;
+export const ResultCardItemImage = styled('img')(({ img }) => ({
+    marginTop: 30,
+    background: `url:(${(img)}) no-repeat center`,
+    backgroundSize: 'cover',
+    width: 200,
+    height: 300,
+}));
 
 export const ResultCardItemCategory = styled('p')`
   color: #b24646;
