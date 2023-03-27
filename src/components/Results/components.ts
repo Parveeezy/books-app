@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
+type ResultCardItemImageType = {
+    img?: string
+}
+
 export const ResultsBlock = styled('div')`
-  max-width: 1880px;
+  max-width: 1600px;
   margin: 50px auto;
   box-sizing: border-box;
 `;
@@ -17,7 +21,6 @@ export const ResultsItemsBlock = styled('div')`
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 10px;
-  margin-left: 15px;
 `;
 
 export const ResultsCardItemWrapper = styled('div')`
@@ -37,14 +40,34 @@ export const ResultsCardItemWrapper = styled('div')`
     margin: 5px 250px 0 0;
   }
 `;
+export const ResultsCardImageBlock = styled('div')`
+  display: block;
+  width: 200px;
+  height: 300px;
+  margin-bottom: 25px;
+`
 
-export const ResultCardItemImage = styled('img')(({ img }) => ({
-    marginTop: 30,
-    background: `url:(${(img)}) no-repeat center`,
-    backgroundSize: 'cover',
-    width: 200,
-    height: 300,
-}));
+export const ResultCardItemImage =  styled('img')<ResultCardItemImageType>`
+  margin-top: 10px;
+  background: url(${({ img }) => img}) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ResultCardItemNoImage =  styled('img')`
+  margin-top: 10px;
+  background: url("https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+
+export const ResultCardText = styled('div')`
+  width: 350px;
+  text-align: start;
+`;
 
 export const ResultCardItemCategory = styled('p')`
   color: #b24646;

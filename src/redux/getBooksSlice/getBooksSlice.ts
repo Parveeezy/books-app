@@ -14,20 +14,18 @@ export type InitialStateType = {
 }
 
 const initialState: InitialStateType = {
-    books: [
-        {
-            id: '',
-            name: '',
-            category: '',
-            img: '',
-        },
-    ],
+    books: [],
 };
 
-export const fetchBooks = () => {
+export const fetchBooks = (bookName:string = 'JavaScript') => {
     return (dispatch: AppDispatch) => {
-        axios.get('https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc')
-            .then(response => dispatch(getBooks(response.data.items)));
+        try {
+            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=40&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc`)
+                .then(response => dispatch(getBooks(response.data.items)));
+        } catch (e) {
+            console.log(e);
+            dispatch(getBooks({books: []}))
+        }
     }
 };
 
