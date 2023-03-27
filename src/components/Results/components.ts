@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
 
 type ResultCardItemImageType = {
     img?: string
@@ -21,6 +22,20 @@ export const ResultsItemsBlock = styled('div')`
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 10px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const ResultsCardItemWrapper = styled('div')`

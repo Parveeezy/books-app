@@ -17,16 +17,16 @@ const initialState: InitialStateType = {
     books: [],
 };
 
-export const fetchBooks = (bookName:string = 'JavaScript') => {
+export const fetchBooks = (bookName: string) => {
     return (dispatch: AppDispatch) => {
         try {
             axios.get(`https://www.googleapis.com/books/v1/volumes?q=${bookName}&maxResults=40&key=AIzaSyAhdyJOku9x2e3Ndjzt0oOTdJyWrW06ecc`)
                 .then(response => dispatch(getBooks(response.data.items)));
         } catch (e) {
             console.log(e);
-            dispatch(getBooks({books: []}))
+            dispatch(getBooks({ books: [] }));
         }
-    }
+    };
 };
 
 const getBooksSlice = createSlice({
@@ -34,8 +34,8 @@ const getBooksSlice = createSlice({
     initialState,
     reducers: {
         getBooks: (state, action) => {
-            state.books = action.payload
-        }
+            state.books = action.payload;
+        },
     },
 });
 

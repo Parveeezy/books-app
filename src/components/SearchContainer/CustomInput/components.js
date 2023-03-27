@@ -22,11 +22,11 @@ export const CustomInpt = styled(TextField)`
     }
 
     &:hover fieldset {
-      border-color: white
+      border-color: yellow;
     }
 
     &.Mui-focused fieldset {
-      border-color: yellow
+      border-color: #1976d2
     }
   }
 `;
