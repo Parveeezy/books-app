@@ -1,32 +1,23 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { CustomInpt } from './components';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../redux/store/store';
-import { fetchBooks } from '../../../redux/getBooksSlice/getBooksSlice';
+import React from 'react';
+import { CustomInpt, CustomInptType } from './components';
 
-const CustomInput = () => {
+export type CustomInputType = {
+    onChangeValue: (e: string) => void
+    onKeyDownHandler: (e: string) => void
+    value: string
+}
 
-    const [bookName, setBookName] = useState<string>('');
-
-    const dispatch = useDispatch<AppDispatch>();
-
-    const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        e.key === 'Enter' && dispatch(fetchBooks(bookName));
-        e.key === 'Enter' && setBookName('');
-    };
-
-    const onChangeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-        setBookName(e.currentTarget.value);
-    };
+const CustomInput = ({ onChangeValue, value, onKeyDownHandler }: CustomInputType) => {
 
     return (
         <>
-            <CustomInpt value={bookName}
-                        onChange={onChangeInputValue}
-                        onKeyDown={onEnterHandler}
-                        fullWidth
-                        label='Search books...'
-                        id='fullWidth' />
+            <CustomInpt
+                onChange={onChangeValue}
+                onKeyDown={onKeyDownHandler}
+                value={value}
+                fullWidth
+                label='Search books...'
+                id='fullWidth' />
         </>
     );
 };
