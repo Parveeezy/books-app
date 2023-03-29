@@ -1,16 +1,7 @@
 import styled from 'styled-components';
 import { TextField } from '@mui/material';
 
-export interface CustomInptType {
-    readonly  onChange: () => void;
-    readonly  onKeyDown: () => void;
-    readonly  value: string;
-    readonly  fullWidth: any;
-    readonly  label: string;
-    readonly  id: string;
-}
-
-export const CustomInpt = styled(TextField)<CustomInptType>`
+export const CustomInpt = styled(TextField)`
   max-width: 500px;
 
   input {
