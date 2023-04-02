@@ -31,7 +31,10 @@ const SearchForm = () => {
                     onChangeValue={onChangeInputValue}
                     onKeyDownHandler={onEnterHandler}
                 />
-                <CustomBtn/>
+                <CustomBtn
+                    bookName={bookName}
+                    setBookName={setBookName}
+                />
             </SearchBlock>
             <SelectsBlock>
                 <Selects />
