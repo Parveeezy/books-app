@@ -12,8 +12,17 @@ const setCategoriesSlice = createSlice({
         },
         reducers: {
             setCategories: (state, action) => {
-                state.books = action.payload.books.filter((el: any) =>
-                    el.category !== action.payload.el);
+                console.log(state);
+                console.log(action.payload);
+                try {
+                    state.books = action.payload.books.filter((el: any) => {
+                        console.log(el.category);
+                        return el.category !== action.payload.books.volumeInfo.categories;
+                    });
+                } catch (error) {
+                    console.log(error);
+                    return state
+                }
             },
         },
     },
