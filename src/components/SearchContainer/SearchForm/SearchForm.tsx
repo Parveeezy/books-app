@@ -19,7 +19,6 @@ const SearchForm = () => {
 
     const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         e.key === 'Enter' && dispatch(fetchBooks(bookName));
-        e.key === 'Enter' && setBookName('');
     };
 
     return (

@@ -9,7 +9,12 @@ import {
     ValuesAndTextType,
 } from '../../../redux/selectSlice/selectSlice';
 import { AppDispatch, RootState } from '../../../redux/store/store';
-import { CustomMenuItem, CustomSelect, SelectsContainer, Title } from './components';
+import {
+    CustomMenuItem,
+    CustomSelect,
+    SelectsContainer,
+    Title
+} from './components';
 import { setCategories } from '../../../redux/setCategoriesSlice/setCategoriesSlice';
 
 const Selects = () => {

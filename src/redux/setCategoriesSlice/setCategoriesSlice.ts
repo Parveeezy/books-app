@@ -1,25 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+    books: []
+}
+
 const setCategoriesSlice = createSlice({
         name: 'setCategories',
-        initialState: {
-            books: [{
-                id: '',
-                name: '',
-                category: '',
-                img: '',
-            }],
-        },
+        initialState,
         reducers: {
-            setCategories: (state, action) => {
-                console.log(state);
-                console.log(action.payload);
+            setCategories: (state: any, action) => {
                 try {
-                    state.books = action.payload.books.filter((el: any) => {
-                        console.log(el.category);
-                        return el.category !== action.payload.books.volumeInfo.categories;
-                    });
-                } catch (error) {
+                    return {
+                        ...state, books: [...state.books].filter((el:any) => {
+                            return el.category !== action.payload.el;
+                        })
+                    }
+                }
+                catch (error: any) {
                     console.log(error);
                     return state
                 }

@@ -15,7 +15,6 @@ const CustomBtn = (props: CustomBtnType) => {
 
     const onButtonHandler = () => {
         dispatch(fetchBooks(props.bookName));
-        props.setBookName('');
     };
 
     return (
