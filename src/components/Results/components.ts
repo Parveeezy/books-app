@@ -46,6 +46,7 @@ export const ResultsCardItemWrapper = styled('div')`
   width: 380px;
   background-color: rgba(98, 98, 66, 0.23);
   margin-bottom: 4px;
+  cursor: pointer;
 
   & p:nth-child(2) {
     margin: 15px 250px 5px 0;
@@ -55,6 +56,7 @@ export const ResultsCardItemWrapper = styled('div')`
     margin: 5px 250px 0 0;
   }
 `;
+
 export const ResultsCardImageBlock = styled('div')`
   display: block;
   width: 200px;

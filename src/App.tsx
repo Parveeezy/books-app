@@ -1,14 +1,20 @@
 import React from 'react';
 import './App.css';
-import SearchContainer from './components/SearchContainer/SearchContainer';
+import { Layout } from './components/Layout';
+import { Route, Routes } from 'react-router-dom';
+import FullBookInfo from './components/FullBookInfo';
 import Results from './components/Results/Results';
 
 function App() {
 
     return (
         <div className='App'>
-            <SearchContainer />
-            <Results />
+            <Routes>
+                <Route path={'/'} element={<Layout />}>
+                    <Route path={'book'} element={<FullBookInfo />} />
+                    <Route path={'results'} element={<Results />} />
+                </Route>
+            </Routes>
         </div>
     );
 }
