@@ -2,7 +2,7 @@
   "name": "books-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://parveeezy.github.io/",
+  "homepage": "https://parveeezy.github.io/books-app/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
