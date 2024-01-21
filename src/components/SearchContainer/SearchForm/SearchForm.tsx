@@ -19,7 +19,8 @@ const SearchForm = () => {
     };
 
     const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        e.key === 'Enter' && dispatch(fetchBooks(bookName));
+        const target = (e.target as HTMLInputElement).value;
+        (target !== '' && e.key === 'Enter') && dispatch(fetchBooks(bookName));
     };
 
     return (
@@ -31,7 +32,7 @@ const SearchForm = () => {
                     onChangeValue={onChangeInputValue}
                     onKeyDownHandler={onEnterHandler}
                 />
-                <NavLink to={'/results'}>
+                <NavLink to={'results'}>
                     <CustomBtn
                         bookName={bookName}
                         setBookName={setBookName}

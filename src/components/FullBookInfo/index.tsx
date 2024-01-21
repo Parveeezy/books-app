@@ -25,8 +25,8 @@ const FullBookInfo = () => {
                         )
                     })}
                 </div>
-                <NavLink to={'/results'}>
-                    Home
+                <NavLink to={'/books-app/results'}>
+                    Back to results
                 </NavLink>
             </BookFullInfoWrapper>
         </BookFullInfoContainer>
