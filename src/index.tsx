@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
-import { BrowserRouter, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Results from './components/Results/Results';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement,
@@ -15,6 +16,12 @@ const router = createBrowserRouter([
     {
         path: "/books-app",
         element: <App />,
+        children: [
+            {
+                path: "results",
+                element: <Results/>
+            }
+        ]
     },
 ]);
 
