@@ -12,17 +12,35 @@ import {
 } from './components';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/store/store';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getId } from '../../redux/getBookId/getBookIdSlice';
 
 const Results = () => {
     const booksArr: any = useSelector<RootState>(state => state.books);
+    const [searchResults, setSearchResults] = useState<any>(booksArr)
+    const [error, setError] = useState(false)
+
     const dispatch = useDispatch<AppDispatch>();
 
     const getBookId = (el: MouseEvent) => {
         dispatch(getId(el));
     };
+
+    useEffect(() => {
+        const temp = window.localStorage.getItem("res");
+        const loadedRes = temp ? JSON.parse(temp) : null;
+        if (loadedRes) {
+            setSearchResults(loadedRes);
+        } else {
+            setError(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        const temp = JSON.stringify(searchResults)
+        window.localStorage.setItem('res', temp)
+    }, [searchResults, setSearchResults])
 
     return (
         <ResultsBlock>
