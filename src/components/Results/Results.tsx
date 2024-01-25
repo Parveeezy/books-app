@@ -15,36 +15,19 @@ import { AppDispatch, RootState } from '../../redux/store/store';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getId } from '../../redux/getBookId/getBookIdSlice';
+import { set } from 'immer/dist/utils/common';
 
 const Results = () => {
-    const booksArr: any = useSelector<RootState>(state => state.books);
-    const [searchResults, setSearchResults] = useState<any>(booksArr)
-    const [error, setError] = useState(false)
-
+    let booksArr: any = useSelector<RootState>(state => state.books);
     const dispatch = useDispatch<AppDispatch>();
 
     const getBookId = (el: MouseEvent) => {
         dispatch(getId(el));
     };
 
-    useEffect(() => {
-        const temp = window.localStorage.getItem("res");
-        const loadedRes = temp ? JSON.parse(temp) : null;
-        if (loadedRes) {
-            setSearchResults(loadedRes);
-        } else {
-            setError(true);
-        }
-    }, []);
-
-    useEffect(() => {
-        const temp = JSON.stringify(searchResults)
-        window.localStorage.setItem('res', temp)
-    }, [searchResults, setSearchResults])
-
     return (
         <ResultsBlock>
-            {booksArr.books.length > 0 ? (
+            {booksArr.books?.length > 0 ? (
                     <>
                         <ResultsTitle>Found {booksArr.books.length} result</ResultsTitle>
                         <ResultsItemsBlock>
@@ -52,12 +35,12 @@ const Results = () => {
                                 return (
                                     <ResultsCardItemWrapper key={el.id}>
                                         <ResultsCardImageBlock>
-                                            {el.volumeInfo.imageLinks ? (
-                                                <ResultCardItemImage
-                                                    img={el.volumeInfo.imageLinks.smallThumbnail}
-                                                />) : (
-                                                <ResultCardItemNoImage />
-                                            )}
+                                            {
+                                                el.volumeInfo.imageLinks ? (
+                                                    <ResultCardItemImage
+                                                        img={el.volumeInfo.imageLinks.smallThumbnail}
+                                                    />) : (<ResultCardItemNoImage />)
+                                            }
                                         </ResultsCardImageBlock>
                                         <NavLink to={'/book'}>
                                             <ResultCardText onClick={() => getBookId(el.id)}>

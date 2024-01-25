@@ -19,7 +19,7 @@ const FullBookInfo = () => {
                 <div>
                     {book.map((el: any) => {
                         return (
-                            <div>
+                            <div key={el.id}>
                                 {el.id}
                             </div>
                         )
