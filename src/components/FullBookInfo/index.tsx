@@ -11,8 +11,6 @@ const FullBookInfo = () => {
 
     const book = books.filter((el: any) => el.id === bookId);
 
-    console.log({ book });
-
     return (
         <BookFullInfoContainer>
             <BookFullInfoWrapper>
