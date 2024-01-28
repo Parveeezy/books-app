@@ -3,7 +3,17 @@ import { MenuItem, Select } from '@mui/material';
 
 export const SelectsContainer = styled('div')`
   margin-top: 25px;
-  margin-left: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+
+  @media screen and (max-width: 463px) {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled('span')`
