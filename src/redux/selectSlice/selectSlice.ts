@@ -70,21 +70,21 @@ const sorting: SortingArrayType = [
 const selectCategoriesSlice = createSlice({
     name: 'selectCategories',
     initialState: categories,
-    reducers: {
+    reducers: () => ({
         selectCategories: (state, action) => {
             return [...state];
         },
-    },
+    }),
 });
 
 const selectSortingSlice = createSlice({
     name: 'selectSorting',
     initialState: sorting,
-    reducers: {
+    reducers: () => ({
         selectSorting: (state, action) => {
             return [...state];
         },
-    },
+    }),
 });
 
 export const { selectCategories } = selectCategoriesSlice.actions;

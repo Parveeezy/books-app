@@ -11,11 +11,11 @@ const initialState: InitialState = {
 export const getBookIdSlice = createSlice({
     name: 'getBookId',
     initialState,
-    reducers: {
+    reducers: () => ({
         getId: (state, action) => {
             state.id = action.payload;
         },
-    },
+    }),
 });
 
 export const { getId } = getBookIdSlice.actions;

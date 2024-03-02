@@ -7,7 +7,7 @@ const initialState = {
 const setCategoriesSlice = createSlice({
         name: 'setCategories',
         initialState,
-        reducers: {
+        reducers: () => ({
             setCategories: (state: any, action) => {
                 try {
                     return {
@@ -21,7 +21,7 @@ const setCategoriesSlice = createSlice({
                     return state
                 }
             },
-        },
+        }),
     },
 );
 

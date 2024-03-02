@@ -32,11 +32,11 @@ export const fetchBooks = (bookName: string) => {
 const getBooksSlice = createSlice({
     name: 'getBooks',
     initialState,
-    reducers: {
+    reducers: () => ({
         getBooks: (state, action) => {
             state.books = action.payload;
         },
-    },
+    }),
 });
 
 export const { getBooks } = getBooksSlice.actions;
